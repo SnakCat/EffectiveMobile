@@ -7,25 +7,125 @@
 
 import UIKit
 
-protocol TodoViewProtocolOutput: AnyObject {
-    
+protocol TodoViewInput: AnyObject {
+    func displayTodos(_ todos: [TodoModel])
+    func displayError(_ error: RequestError)
 }
 
-final class TodoViewController: UIViewController, TodoViewProtocolOutput {
-    var presenter: TodoPresenterProtocolInput
+final class TodoViewController: UIViewController, UISearchBarDelegate {
     
-    init(presenter: TodoPresenterProtocolInput) {
+    private let titleLabel = UILabel()
+    private let searchBar = UISearchBar()
+    private let tableView = UITableView()
+    var todos: [TodoModel] = []
+    private var presenter: TodoPresenterInput
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+
+    init(presenter: TodoPresenterInput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
         
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        addSubView()
+        setupConstraints()
+        setupUI()
+        setupSearchBar()
+        setupTableView()
+        self.activityIndicator.stopAnimating()
+        presenter.onViewDidLoad()
+    }
+    
+    private func addSubView() {
+        view.addSubViews(titleLabel, searchBar, tableView, activityIndicator)
+    }
+    
+    private func setupConstraints() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            searchBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .black
+        titleLabel.text = "Задачи"
+        titleLabel.textColor = .white
+        titleLabel.font = .boldSystemFont(ofSize: 34)
+    }
+    
+    private func setupSearchBar() {
+        searchBar.placeholder = "Search"
+        searchBar.searchBarStyle = .minimal
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.backgroundColor = UIColor.darkGray
+            textField.layer.cornerRadius = 12
+            textField.clipsToBounds = true
+            textField.textColor = .white
+            if let leftView = textField.leftView as? UIImageView {
+                leftView.tintColor = .lightGray
+            }
+        }
+        searchBar.delegate = self
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "CustomCell")
+    }
+}
+
+extension TodoViewController: TodoViewInput {
+    func displayTodos(_ todos: [TodoModel]) {
+        self.activityIndicator.stopAnimating()
+        self.todos = todos
+        self.tableView.reloadData()
+    }
+    
+    func displayError(_ error: RequestError) {
+        self.activityIndicator.stopAnimating()
+    }
+    
+}
+
+extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        todos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as? CustomCell {
+            let todo = todos[indexPath.row]
+            cell.configureCell(todo: todo)
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
 }

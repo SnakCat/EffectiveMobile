@@ -7,19 +7,32 @@
 
 import Foundation
 
-protocol TodoPresenterProtocolInput {
-    
+protocol TodoPresenterInput {
+    func onViewDidLoad()
 }
 
-protocol TodoPresenterProtocolOutput {
-    
+protocol TodoPresenterOutput {
+    func didFetchTodos(_ todos: [TodoModel])
+    func didFailFetching(_ error: RequestError)
 }
 
-final class TodoPresenter: TodoPresenterProtocolOutput, TodoPresenterProtocolInput {
-    var view: TodoViewProtocolOutput?
-    private let interactor: TodoInteractorProtocolInput
+final class TodoPresenter: TodoPresenterOutput, TodoPresenterInput {
+    var view: TodoViewInput?
+    private let interactor: TodoInteractorInput
     
-    init(interactor: TodoInteractorProtocolInput) {
+    init(interactor: TodoInteractorInput) {
         self.interactor = interactor
+    }
+    
+    func onViewDidLoad() {
+        interactor.fetchTodos()
+    }
+    
+    func didFetchTodos(_ todos: [TodoModel]) {
+        view?.displayTodos(todos)
+    }
+    
+    func didFailFetching(_ error: RequestError) {
+        view?.displayError(error)
     }
 }

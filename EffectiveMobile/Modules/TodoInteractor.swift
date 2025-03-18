@@ -8,21 +8,31 @@
 import UIKit
 
 
-protocol TodoInteractorProtocolInput {
+protocol TodoInteractorInput {
     func fetchTodos()
 }
-
-protocol TodoInteractorProtocolOutput {
+protocol TodoInteractorOutput {
     
 }
 
 
-final class TodoInteractor: TodoInteractorProtocolInput {
-    var presenter: TodoPresenterProtocolOutput?
-
+final class TodoInteractor: TodoInteractorInput {
+    
+    var presenter: TodoPresenterOutput?
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     func fetchTodos() {
-
+        activityIndicator.startAnimating()
+        NetworkManager.instance.getTodos { result in
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async {
+                    self.presenter?.didFetchTodos(success)
+                }
+            case .failure(let failure):
+                self.presenter?.didFailFetching(failure)
+            }
+        }
+        
     }
-    
-    
 }
