@@ -13,6 +13,10 @@
 		527BCC302D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC2E2D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld */; };
 		527BCC322D89A0C4006E1713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527BCC312D89A0C4006E1713 /* Assets.xcassets */; };
 		527BCC352D89A0C4006E1713 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 527BCC342D89A0C4006E1713 /* Base */; };
+		527BCC3D2D89A456006E1713 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC3C2D89A456006E1713 /* NetworkManager.swift */; };
+		527BCC402D89A465006E1713 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 527BCC3F2D89A465006E1713 /* Alamofire */; };
+		527BCC422D89A491006E1713 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC412D89A491006E1713 /* TodoModel.swift */; };
+		527BCC442D89A4D0006E1713 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC432D89A4D0006E1713 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,9 @@
 		527BCC312D89A0C4006E1713 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		527BCC342D89A0C4006E1713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		527BCC362D89A0C4006E1713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		527BCC3C2D89A456006E1713 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		527BCC412D89A491006E1713 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		527BCC432D89A4D0006E1713 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				527BCC402D89A465006E1713 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +71,9 @@
 				527BCC332D89A0C4006E1713 /* LaunchScreen.storyboard */,
 				527BCC362D89A0C4006E1713 /* Info.plist */,
 				527BCC2E2D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld */,
+				527BCC3C2D89A456006E1713 /* NetworkManager.swift */,
+				527BCC412D89A491006E1713 /* TodoModel.swift */,
+				527BCC432D89A4D0006E1713 /* Error.swift */,
 			);
 			path = EffectiveMobile;
 			sourceTree = "<group>";
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = EffectiveMobile;
+			packageProductDependencies = (
+				527BCC3F2D89A465006E1713 /* Alamofire */,
+			);
 			productName = EffectiveMobile;
 			productReference = 527BCC222D89A0C2006E1713 /* EffectiveMobile.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 527BCC192D89A0C2006E1713;
+			packageReferences = (
+				527BCC3E2D89A465006E1713 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 527BCC232D89A0C2006E1713 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,7 +156,10 @@
 			files = (
 				527BCC2A2D89A0C2006E1713 /* ViewController.swift in Sources */,
 				527BCC302D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld in Sources */,
+				527BCC3D2D89A456006E1713 /* NetworkManager.swift in Sources */,
+				527BCC422D89A491006E1713 /* TodoModel.swift in Sources */,
 				527BCC262D89A0C2006E1713 /* AppDelegate.swift in Sources */,
+				527BCC442D89A4D0006E1713 /* Error.swift in Sources */,
 				527BCC282D89A0C2006E1713 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +379,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		527BCC3E2D89A465006E1713 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		527BCC3F2D89A465006E1713 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 527BCC3E2D89A465006E1713 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		527BCC2E2D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld */ = {
