@@ -8,6 +8,7 @@
 import Alamofire
 
 final class NetworkManager {
+    
     static let instance = NetworkManager()
     private init() { }
     
@@ -33,4 +34,3 @@ final class NetworkManager {
         }
     }
 }
-

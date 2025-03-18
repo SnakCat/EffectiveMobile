@@ -1,5 +1,5 @@
 //
-//  TodoModel.swift
+//  TodoEntity.swift
 //  EffectiveMobile
 //
 //  Created by Дмитрий Трушин on 18/03/2025.
