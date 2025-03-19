@@ -121,6 +121,9 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CustomCell.self, forCellReuseIdentifier: "CustomCell")
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .lightGray
+        tableView.backgroundColor = .black
     }
 }
 
@@ -155,6 +158,8 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as? CustomCell {
             let todo = todos[indexPath.row]
             cell.configureCell(todo: todo)
+            cell.backgroundColor = .clear
+            cell.contentView.backgroundColor = .black
             return cell
         }
         return UITableViewCell()
@@ -162,5 +167,31 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.contentView.backgroundColor = UIColor.darkGray
+        }
+        
+        let todo = todos[indexPath.row]
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let edit = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { _ in
+                
+            }
+            
+            let share = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                
+            }
+            
+            let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                
+            }
+            
+            return UIMenu(title: "", children: [edit, share, delete])
+        }
     }
 }

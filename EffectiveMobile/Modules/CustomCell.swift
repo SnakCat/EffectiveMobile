@@ -66,7 +66,9 @@ final class CustomCell: UITableViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = .black
-        containerView.backgroundColor = .black
+        contentView.layer.cornerRadius = 10
+        containerView.backgroundColor = .clear
+        containerView.layer.masksToBounds = true
         
         titleLabel.textColor = .white
         
