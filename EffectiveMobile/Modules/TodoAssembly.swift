@@ -11,7 +11,7 @@ import UIKit
 final class TodoAssembly {
     
     static func assembly() -> UIViewController {
-        let interactor = TodoInteractor()// принимать API CD
+        let interactor = TodoInteractor()
         let presenter = TodoPresenter(interactor: interactor)
         let viewController = TodoViewController(presenter: presenter)
         let router = TodoRouter(view: viewController)

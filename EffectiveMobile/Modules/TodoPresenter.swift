@@ -30,9 +30,18 @@ final class TodoPresenter: TodoPresenterOutput, TodoPresenterInput {
     
     func didFetchTodos(_ todos: [TodoModel]) {
         view?.displayTodos(todos)
+        view?.reloadTable()
+        refreshCountLabel(todos)
     }
     
     func didFailFetching(_ error: RequestError) {
         view?.displayError(error)
+    }
+    
+    func refreshCountLabel(_ todos: [TodoModel]) {
+        let count = todos.count
+        let word = count == 1 ? "задача" : (count >= 2 && count <= 4 ? "задачи" : "задач")
+        let text = "\(count) \(word)"
+        view?.updateCountLabel(text: text)
     }
 }

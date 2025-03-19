@@ -10,6 +10,8 @@ import UIKit
 protocol TodoViewInput: AnyObject {
     func displayTodos(_ todos: [TodoModel])
     func displayError(_ error: RequestError)
+    func updateCountLabel(text: String)
+    func reloadTable()
 }
 
 final class TodoViewController: UIViewController, UISearchBarDelegate {
@@ -20,6 +22,9 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
     var todos: [TodoModel] = []
     private var presenter: TodoPresenterInput
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    private let footerView = UIView()
+    private let counterLabel = UILabel()
+    private let addTodoButton = UIButton()
 
     init(presenter: TodoPresenterInput) {
         self.presenter = presenter
@@ -42,7 +47,8 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
     }
     
     private func addSubView() {
-        view.addSubViews(titleLabel, searchBar, tableView, activityIndicator)
+        view.addSubViews(titleLabel, searchBar, tableView, activityIndicator, footerView)
+        footerView.addSubViews(counterLabel, addTodoButton)
     }
     
     private func setupConstraints() {
@@ -50,6 +56,9 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        counterLabel.translatesAutoresizingMaskIntoConstraints = false
+        addTodoButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -62,10 +71,21 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: footerView.topAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            footerView.heightAnchor.constraint(equalToConstant: 84),
+            
+            counterLabel.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 20),
+            counterLabel.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+            
+            addTodoButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 14),
+            addTodoButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -22)
         ])
     }
     
@@ -74,6 +94,12 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         titleLabel.text = "Задачи"
         titleLabel.textColor = .white
         titleLabel.font = .boldSystemFont(ofSize: 34)
+        footerView.backgroundColor = .gray
+        counterLabel.textColor = .white
+        counterLabel.font = .systemFont(ofSize: 11)
+        let image = UIImage(systemName: "square.and.pencil")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        addTodoButton.setImage(image, for: .normal)
+        
     }
     
     private func setupSearchBar() {
@@ -99,6 +125,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
 }
 
 extension TodoViewController: TodoViewInput {
+    
     func displayTodos(_ todos: [TodoModel]) {
         self.activityIndicator.stopAnimating()
         self.todos = todos
@@ -107,6 +134,14 @@ extension TodoViewController: TodoViewInput {
     
     func displayError(_ error: RequestError) {
         self.activityIndicator.stopAnimating()
+    }
+    
+    func updateCountLabel(text: String) {
+        counterLabel.text = text
+    }
+    
+    func reloadTable() {
+        tableView.reloadData()
     }
     
 }
