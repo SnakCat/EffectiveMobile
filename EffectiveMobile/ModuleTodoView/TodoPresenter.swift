@@ -12,6 +12,7 @@ protocol TodoPresenterProtocol: AnyObject {
     func didFetchTodos(_ todos: [TodoModel])
     func didFailFetching(_ error: RequestError)
     func onTapNewTodoButton()
+    func onTapEditTodo(_ todo: TodoModel)
 }
 
 final class TodoPresenter: TodoPresenterProtocol {
@@ -30,6 +31,10 @@ final class TodoPresenter: TodoPresenterProtocol {
     
     func onTapNewTodoButton() {
         router.showNewTodoView()
+    }
+    
+    func onTapEditTodo(_ todo: TodoModel) {
+        router.showEditTodo(todo)
     }
     
     func didFetchTodos(_ todos: [TodoModel]) {

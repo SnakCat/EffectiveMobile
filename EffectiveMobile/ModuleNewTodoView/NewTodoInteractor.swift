@@ -14,5 +14,4 @@ protocol NewTodoInteractorProtocol: AnyObject {
 final class NewTodoInteractor: NewTodoInteractorProtocol {
     weak var presenter: NewTodoPresenterProtocol?
     // описать свойства которые будут приходить из первого модуля
-    
 }

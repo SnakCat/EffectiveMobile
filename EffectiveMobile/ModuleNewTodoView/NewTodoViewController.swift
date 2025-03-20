@@ -11,12 +11,21 @@ protocol NewTodoViewProtocol: AnyObject {
     // метод для отображения информации 
 }
 
-final class NewTodoView: UIViewController {
+final class NewTodoViewController: UIViewController {
     
     var presenter: NewTodoPresenterProtocol?
     private let titleLabel = UILabel()
     private let dateLabel = UILabel()
     private let descriptionLabel = UILabel()
+    var todo: TodoModel?
+    
+    init(todo: TodoModel? = nil) {
+        super.init(nibName: nil, bundle: nil)
+        self.todo = todo
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,21 +55,21 @@ final class NewTodoView: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .black
-        titleLabel.text = "Название задачи"
+        titleLabel.text = todo?.id.description
         titleLabel.textColor = .white
         titleLabel.font = .boldSystemFont(ofSize: 34)
             
-        dateLabel.text = "13/13/13"
+        dateLabel.text = todo?.createdAt
         dateLabel.textColor = .gray
         dateLabel.font = .systemFont(ofSize: 12)
         
-        descriptionLabel.text = "Тут будет большое или не очень большое описание задачи с которой нужно работать"
+        descriptionLabel.text = todo?.todo
         descriptionLabel.textColor = .white
         descriptionLabel.font = .systemFont(ofSize: 16)
         descriptionLabel.numberOfLines = .zero
     }
 }
 
-extension NewTodoView: NewTodoViewProtocol {
+extension NewTodoViewController: NewTodoViewProtocol {
     
 }

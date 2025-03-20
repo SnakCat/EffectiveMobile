@@ -29,7 +29,7 @@
 		527BCC5B2D89B834006E1713 /* TodoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC5A2D89B834006E1713 /* TodoAssembly.swift */; };
 		527BCC5D2D89C0F2006E1713 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC5C2D89C0F2006E1713 /* CustomCell.swift */; };
 		527BCC5F2D89C116006E1713 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC5E2D89C116006E1713 /* CheckboxButton.swift */; };
-		528A41EA2D8B216D00397157 /* NewTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A41E92D8B216D00397157 /* NewTodoView.swift */; };
+		528A41EA2D8B216D00397157 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A41E92D8B216D00397157 /* NewTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +56,7 @@
 		527BCC5A2D89B834006E1713 /* TodoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAssembly.swift; sourceTree = "<group>"; };
 		527BCC5C2D89C0F2006E1713 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		527BCC5E2D89C116006E1713 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
-		528A41E92D8B216D00397157 /* NewTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoView.swift; sourceTree = "<group>"; };
+		528A41E92D8B216D00397157 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +164,7 @@
 		528A41E82D8B213E00397157 /* ModuleNewTodoView */ = {
 			isa = PBXGroup;
 			children = (
-				528A41E92D8B216D00397157 /* NewTodoView.swift */,
+				528A41E92D8B216D00397157 /* NewTodoViewController.swift */,
 				5208E0512D8C2F580005F05D /* NewTodoInteractor.swift */,
 				5208E0532D8C2F640005F05D /* NewTodoPresenter.swift */,
 				5208E0552D8C2F710005F05D /* NewTodoRourter.swift */,
@@ -259,7 +259,7 @@
 				527BCC4F2D89B0DB006E1713 /* TodoRouter.swift in Sources */,
 				527BCC442D89A4D0006E1713 /* Error.swift in Sources */,
 				5208E0522D8C2F580005F05D /* NewTodoInteractor.swift in Sources */,
-				528A41EA2D8B216D00397157 /* NewTodoView.swift in Sources */,
+				528A41EA2D8B216D00397157 /* NewTodoViewController.swift in Sources */,
 				527BCC582D89B1CB006E1713 /* UIViewExtension.swift in Sources */,
 				527BCC4D2D89B0CF006E1713 /* TodoEntity.swift in Sources */,
 				5208E0592D8C389B0005F05D /* NewTodoAssembly.swift in Sources */,

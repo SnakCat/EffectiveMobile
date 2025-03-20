@@ -176,7 +176,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         let todo = todos[indexPath.row]
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let edit = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { _ in
-                self.presenter?.onTapNewTodoButton()
+                self.presenter?.onTapEditTodo(todo)
             }
             
             let share = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in

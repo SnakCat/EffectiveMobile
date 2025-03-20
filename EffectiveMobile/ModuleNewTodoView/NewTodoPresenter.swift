@@ -8,10 +8,11 @@
 import Foundation
 
 protocol NewTodoPresenterProtocol: AnyObject {
-    // получить из интерактера инфу
+
 }
 
 final class NewTodoPresenter: NewTodoPresenterProtocol {
+    
     weak var view: NewTodoViewProtocol?
     var interactor: NewTodoInteractorProtocol
     var router: NewTodoRouterProtocol
