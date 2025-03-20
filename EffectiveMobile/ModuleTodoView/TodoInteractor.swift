@@ -17,14 +17,14 @@ final class TodoInteractor: TodoInteractorProtocol {
     weak var presenter: TodoPresenterProtocol?
     
     func fetchTodos() {
-        NetworkManager.instance.getTodos { result in
+        NetworkManager.instance.getTodos { [weak self] result in
             switch result {
             case .success(let success):
                 DispatchQueue.main.async {
-                    self.presenter?.didFetchTodos(success)
+                    self?.presenter?.didFetchTodos(success)
                 }
             case .failure(let failure):
-                self.presenter?.didFailFetching(failure)
+                self?.presenter?.didFailFetching(failure)
             }
         }
     }
