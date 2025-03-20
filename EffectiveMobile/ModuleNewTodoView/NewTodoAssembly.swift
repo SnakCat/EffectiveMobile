@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class NewTodoAssenbly {
-    static func newAssembly() -> NewTodoView {
-        let interactor = NewTodoInteractor()
+final class NewTodoAssembly {
+    static func newAssembly() -> NewTodoView { // добавить свойства из интерактора
+        let interactor = NewTodoInteractor() // прокинусть свойства 
         let router = NewTodoRouter()
         let presenter = NewTodoPresenter(interactor: interactor, router: router)
         let viewController = NewTodoView()

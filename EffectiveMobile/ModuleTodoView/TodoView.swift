@@ -90,7 +90,12 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         counterLabel.font = .systemFont(ofSize: 11)
         let image = UIImage(systemName: "square.and.pencil")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
         addTodoButton.setImage(image, for: .normal)
+        addTodoButton.addTarget(self, action: #selector(addTodoButtonTapped), for: .touchUpInside)
         
+    }
+    
+    @objc func addTodoButtonTapped() {
+        presenter?.onTapNewTodoButton()
     }
     
     private func setupSearchBar() {
@@ -171,7 +176,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         let todo = todos[indexPath.row]
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let edit = UIAction(title: "Редактировать", image: UIImage(systemName: "pencil")) { _ in
-                
+                self.presenter?.onTapNewTodoButton()
             }
             
             let share = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in

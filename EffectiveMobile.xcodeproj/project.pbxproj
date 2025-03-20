@@ -10,7 +10,7 @@
 		5208E0522D8C2F580005F05D /* NewTodoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208E0512D8C2F580005F05D /* NewTodoInteractor.swift */; };
 		5208E0542D8C2F640005F05D /* NewTodoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208E0532D8C2F640005F05D /* NewTodoPresenter.swift */; };
 		5208E0562D8C2F710005F05D /* NewTodoRourter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208E0552D8C2F710005F05D /* NewTodoRourter.swift */; };
-		5208E0592D8C389B0005F05D /* NewTodoAssenbly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208E0582D8C389B0005F05D /* NewTodoAssenbly.swift */; };
+		5208E0592D8C389B0005F05D /* NewTodoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208E0582D8C389B0005F05D /* NewTodoAssembly.swift */; };
 		527BCC262D89A0C2006E1713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC252D89A0C2006E1713 /* AppDelegate.swift */; };
 		527BCC282D89A0C2006E1713 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC272D89A0C2006E1713 /* SceneDelegate.swift */; };
 		527BCC302D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC2E2D89A0C2006E1713 /* EffectiveMobile.xcdatamodeld */; };
@@ -36,7 +36,7 @@
 		5208E0512D8C2F580005F05D /* NewTodoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoInteractor.swift; sourceTree = "<group>"; };
 		5208E0532D8C2F640005F05D /* NewTodoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoPresenter.swift; sourceTree = "<group>"; };
 		5208E0552D8C2F710005F05D /* NewTodoRourter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoRourter.swift; sourceTree = "<group>"; };
-		5208E0582D8C389B0005F05D /* NewTodoAssenbly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoAssenbly.swift; sourceTree = "<group>"; };
+		5208E0582D8C389B0005F05D /* NewTodoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoAssembly.swift; sourceTree = "<group>"; };
 		527BCC222D89A0C2006E1713 /* EffectiveMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EffectiveMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527BCC252D89A0C2006E1713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527BCC272D89A0C2006E1713 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				5208E0512D8C2F580005F05D /* NewTodoInteractor.swift */,
 				5208E0532D8C2F640005F05D /* NewTodoPresenter.swift */,
 				5208E0552D8C2F710005F05D /* NewTodoRourter.swift */,
-				5208E0582D8C389B0005F05D /* NewTodoAssenbly.swift */,
+				5208E0582D8C389B0005F05D /* NewTodoAssembly.swift */,
 			);
 			path = ModuleNewTodoView;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 				528A41EA2D8B216D00397157 /* NewTodoView.swift in Sources */,
 				527BCC582D89B1CB006E1713 /* UIViewExtension.swift in Sources */,
 				527BCC4D2D89B0CF006E1713 /* TodoEntity.swift in Sources */,
-				5208E0592D8C389B0005F05D /* NewTodoAssenbly.swift in Sources */,
+				5208E0592D8C389B0005F05D /* NewTodoAssembly.swift in Sources */,
 				527BCC492D89B0A9006E1713 /* TodoInteractor.swift in Sources */,
 				527BCC5F2D89C116006E1713 /* CheckboxButton.swift in Sources */,
 				527BCC4B2D89B0BD006E1713 /* TodoPresenter.swift in Sources */,

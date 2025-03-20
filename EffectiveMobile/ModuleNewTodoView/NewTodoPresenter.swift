@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NewTodoPresenterProtocol: AnyObject {
-    
+    // получить из интерактера инфу
 }
 
 final class NewTodoPresenter: NewTodoPresenterProtocol {
