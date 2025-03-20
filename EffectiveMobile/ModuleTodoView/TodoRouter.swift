@@ -12,13 +12,11 @@ protocol TodoRouterProtocol: AnyObject {
 }
 
 final class TodoRouter: TodoRouterProtocol {
-    weak var view: TodoViewProtocol?
+    weak var view: TodoViewController?
     
     func showNewTodoView() {
         let newTodoViewController = NewTodoAssembly.newAssembly()
-        if let sourceView = view as? UIViewController {
-            sourceView.present(newTodoViewController, animated: true)
-        }
+        view?.navigationController?.pushViewController(newTodoViewController, animated: true)
     }
 }
 
