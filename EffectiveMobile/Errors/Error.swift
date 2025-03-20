@@ -10,3 +10,7 @@ import Foundation
 enum RequestError: Error {
     case errorRequest
 }
+
+enum CoreDataError: Error {
+    case error(String)
+}

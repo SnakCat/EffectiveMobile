@@ -8,15 +8,15 @@
 import UIKit
 
 protocol NewTodoViewProtocol: AnyObject {
-    // метод для отображения информации 
+    
 }
 
 final class NewTodoViewController: UIViewController {
     
     var presenter: NewTodoPresenterProtocol?
-    private let titleLabel = UILabel()
+    private let titleLabel = UITextField()
     private let dateLabel = UILabel()
-    private let descriptionLabel = UILabel()
+    private let descriptionLabel = UITextView()
     var todo: TodoModel?
     
     init(todo: TodoModel? = nil) {
@@ -49,7 +49,8 @@ final class NewTodoViewController: UIViewController {
             
             descriptionLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -58,6 +59,7 @@ final class NewTodoViewController: UIViewController {
         titleLabel.text = todo?.id.description
         titleLabel.textColor = .white
         titleLabel.font = .boldSystemFont(ofSize: 34)
+        titleLabel.placeholder = "Введите название"
             
         dateLabel.text = todo?.createdAt
         dateLabel.textColor = .gray
@@ -66,7 +68,7 @@ final class NewTodoViewController: UIViewController {
         descriptionLabel.text = todo?.todo
         descriptionLabel.textColor = .white
         descriptionLabel.font = .systemFont(ofSize: 16)
-        descriptionLabel.numberOfLines = .zero
+        descriptionLabel.backgroundColor = .clear
     }
 }
 
