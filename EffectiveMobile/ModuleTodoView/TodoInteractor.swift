@@ -8,21 +8,15 @@
 import UIKit
 
 
-protocol TodoInteractorInput {
+protocol TodoInteractorProtocol: AnyObject {
     func fetchTodos()
 }
-protocol TodoInteractorOutput {
-    
-}
 
-
-final class TodoInteractor: TodoInteractorInput {
+final class TodoInteractor: TodoInteractorProtocol {
     
-    var presenter: TodoPresenterOutput?
-    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    weak var presenter: TodoPresenterProtocol?
     
     func fetchTodos() {
-        activityIndicator.startAnimating()
         NetworkManager.instance.getTodos { result in
             switch result {
             case .success(let success):
@@ -33,6 +27,5 @@ final class TodoInteractor: TodoInteractorInput {
                 self.presenter?.didFailFetching(failure)
             }
         }
-        
     }
 }

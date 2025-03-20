@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = TodoAssembly.assembly()
+        window?.rootViewController = UINavigationController(rootViewController: TodoAssembly.assembly())
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

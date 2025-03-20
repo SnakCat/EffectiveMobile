@@ -25,6 +25,7 @@
 		527BCC5B2D89B834006E1713 /* TodoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC5A2D89B834006E1713 /* TodoAssembly.swift */; };
 		527BCC5D2D89C0F2006E1713 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC5C2D89C0F2006E1713 /* CustomCell.swift */; };
 		527BCC5F2D89C116006E1713 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527BCC5E2D89C116006E1713 /* CheckboxButton.swift */; };
+		528A41EA2D8B216D00397157 /* NewTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A41E92D8B216D00397157 /* NewTodoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		527BCC5A2D89B834006E1713 /* TodoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAssembly.swift; sourceTree = "<group>"; };
 		527BCC5C2D89C0F2006E1713 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		527BCC5E2D89C116006E1713 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		528A41E92D8B216D00397157 /* NewTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,11 +82,12 @@
 		527BCC242D89A0C2006E1713 /* EffectiveMobile */ = {
 			isa = PBXGroup;
 			children = (
+				528A41E82D8B213E00397157 /* ModuleNewTodoView */,
 				527BCC592D89B265006E1713 /* Helpers */,
 				527BCC562D89B1A2006E1713 /* Extensions */,
 				527BCC552D89B194006E1713 /* Errors */,
 				527BCC502D89B0E3006E1713 /* Core */,
-				527BCC452D89B070006E1713 /* Modules */,
+				527BCC452D89B070006E1713 /* ModuleTodoView */,
 				527BCC252D89A0C2006E1713 /* AppDelegate.swift */,
 				527BCC272D89A0C2006E1713 /* SceneDelegate.swift */,
 				527BCC312D89A0C4006E1713 /* Assets.xcassets */,
@@ -95,7 +98,7 @@
 			path = EffectiveMobile;
 			sourceTree = "<group>";
 		};
-		527BCC452D89B070006E1713 /* Modules */ = {
+		527BCC452D89B070006E1713 /* ModuleTodoView */ = {
 			isa = PBXGroup;
 			children = (
 				527BCC462D89B099006E1713 /* TodoView.swift */,
@@ -106,7 +109,7 @@
 				527BCC5A2D89B834006E1713 /* TodoAssembly.swift */,
 				527BCC5C2D89C0F2006E1713 /* CustomCell.swift */,
 			);
-			path = Modules;
+			path = ModuleTodoView;
 			sourceTree = "<group>";
 		};
 		527BCC502D89B0E3006E1713 /* Core */ = {
@@ -140,6 +143,14 @@
 				527BCC5E2D89C116006E1713 /* CheckboxButton.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		528A41E82D8B213E00397157 /* ModuleNewTodoView */ = {
+			isa = PBXGroup;
+			children = (
+				528A41E92D8B216D00397157 /* NewTodoView.swift */,
+			);
+			path = ModuleNewTodoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +236,7 @@
 				527BCC5B2D89B834006E1713 /* TodoAssembly.swift in Sources */,
 				527BCC4F2D89B0DB006E1713 /* TodoRouter.swift in Sources */,
 				527BCC442D89A4D0006E1713 /* Error.swift in Sources */,
+				528A41EA2D8B216D00397157 /* NewTodoView.swift in Sources */,
 				527BCC582D89B1CB006E1713 /* UIViewExtension.swift in Sources */,
 				527BCC4D2D89B0CF006E1713 /* TodoEntity.swift in Sources */,
 				527BCC492D89B0A9006E1713 /* TodoInteractor.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TodoViewInput: AnyObject {
+protocol TodoViewProtocol: AnyObject {
     func displayTodos(_ todos: [TodoModel])
     func displayError(_ error: RequestError)
     func updateCountLabel(text: String)
@@ -20,20 +20,11 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
     private let searchBar = UISearchBar()
     private let tableView = UITableView()
     var todos: [TodoModel] = []
-    private var presenter: TodoPresenterInput
+    var presenter: TodoPresenterProtocol?
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let footerView = UIView()
     private let counterLabel = UILabel()
     private let addTodoButton = UIButton()
-
-    init(presenter: TodoPresenterInput) {
-        self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
-        
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +34,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         setupSearchBar()
         setupTableView()
         self.activityIndicator.stopAnimating()
-        presenter.onViewDidLoad()
+        presenter?.onViewDidLoad()
     }
     
     private func addSubView() {
@@ -127,7 +118,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
-extension TodoViewController: TodoViewInput {
+extension TodoViewController: TodoViewProtocol {
     
     func displayTodos(_ todos: [TodoModel]) {
         self.activityIndicator.stopAnimating()

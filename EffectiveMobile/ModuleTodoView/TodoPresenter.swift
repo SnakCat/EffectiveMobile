@@ -7,21 +7,20 @@
 
 import Foundation
 
-protocol TodoPresenterInput {
+protocol TodoPresenterProtocol: AnyObject {
     func onViewDidLoad()
-}
-
-protocol TodoPresenterOutput {
     func didFetchTodos(_ todos: [TodoModel])
     func didFailFetching(_ error: RequestError)
 }
 
-final class TodoPresenter: TodoPresenterOutput, TodoPresenterInput {
-    var view: TodoViewInput?
-    private let interactor: TodoInteractorInput
+final class TodoPresenter: TodoPresenterProtocol {
+    weak var view: TodoViewProtocol?
+    var interactor: TodoInteractorProtocol
+    var router: TodoRouterProtocol
     
-    init(interactor: TodoInteractorInput) {
+    init(interactor: TodoInteractorProtocol, router: TodoRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
     
     func onViewDidLoad() {

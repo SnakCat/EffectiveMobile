@@ -10,13 +10,15 @@ import UIKit
 
 final class TodoAssembly {
     
-    static func assembly() -> UIViewController {
+    static func assembly() -> TodoViewController {
         let interactor = TodoInteractor()
-        let presenter = TodoPresenter(interactor: interactor)
-        let viewController = TodoViewController(presenter: presenter)
-        let router = TodoRouter(view: viewController)
+        let router = TodoRouter()
+        let presenter = TodoPresenter(interactor: interactor, router: router)
+        let viewController = TodoViewController()
+        viewController.presenter = presenter
         presenter.view = viewController
         interactor.presenter = presenter
+        router.view = viewController
         return viewController
     }
 }
