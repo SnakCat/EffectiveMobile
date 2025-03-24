@@ -24,10 +24,10 @@ final class NewTodoPresenter: NewTodoPresenterProtocol {
     }
     
     func didFetchTodos(_ todos: [TodoEntity]) {
-        <#code#>
+        //
     }
     
     func didFailWithError(_ error: CoreDataError) {
-        <#code#>
+        //
     }
 }
