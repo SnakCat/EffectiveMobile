@@ -13,12 +13,14 @@ protocol NewTodoViewProtocol: AnyObject {
 
 final class NewTodoViewController: UIViewController {
     
+    //MARK: properties
     var presenter: NewTodoPresenterProtocol?
     private let titleLabel = UITextField()
     private let dateLabel = UILabel()
     private let descriptionLabel = UITextView()
     var todo: TodoModel?
     
+    //init
     init(todo: TodoModel? = nil) {
         super.init(nibName: nil, bundle: nil)
         self.todo = todo
@@ -27,6 +29,7 @@ final class NewTodoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubViews(titleLabel, dateLabel, descriptionLabel)
@@ -34,6 +37,9 @@ final class NewTodoViewController: UIViewController {
         setupUI()
     }
         
+    //MARK: helpers methods
+    
+    //constraints
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,6 +60,7 @@ final class NewTodoViewController: UIViewController {
         ])
     }
     
+    //UI
     private func setupUI() {
         view.backgroundColor = .black
         titleLabel.text = todo?.id.description
@@ -72,6 +79,7 @@ final class NewTodoViewController: UIViewController {
     }
 }
 
+//MARK: extension protocol
 extension NewTodoViewController: NewTodoViewProtocol {
     
 }

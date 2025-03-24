@@ -16,6 +16,7 @@ protocol TodoViewProtocol: AnyObject {
 
 final class TodoViewController: UIViewController, UISearchBarDelegate {
     
+    //MARK: properties
     private let titleLabel = UILabel()
     private let searchBar = UISearchBar()
     private let tableView = UITableView()
@@ -26,6 +27,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
     private let counterLabel = UILabel()
     private let addTodoButton = UIButton()
     
+    //MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubView()
@@ -37,11 +39,15 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         presenter?.onViewDidLoad()
     }
     
+    //MARK: helpers methods
+    
+    //add sub view
     private func addSubView() {
         view.addSubViews(titleLabel, searchBar, tableView, activityIndicator, footerView)
         footerView.addSubViews(counterLabel, addTodoButton)
     }
     
+    //constraints
     private func setupConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +86,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         ])
     }
     
+    //UI
     private func setupUI() {
         view.backgroundColor = .black
         titleLabel.text = "Задачи"
@@ -94,10 +101,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    @objc func addTodoButtonTapped() {
-        presenter?.onTapNewTodoButton()
-    }
-    
+    //search bar
     private func setupSearchBar() {
         searchBar.placeholder = "Search"
         searchBar.searchBarStyle = .minimal
@@ -113,6 +117,12 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
     
+    //selector button
+    @objc func addTodoButtonTapped() {
+        presenter?.onTapNewTodoButton()
+    }
+    
+    // table view
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -123,6 +133,7 @@ final class TodoViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
+//MARK: extension protocol
 extension TodoViewController: TodoViewProtocol {
     
     func displayTodos(_ todos: [TodoModel]) {
@@ -145,6 +156,7 @@ extension TodoViewController: TodoViewProtocol {
     
 }
 
+//MARK: extension table view
 extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         todos.count

@@ -9,6 +9,7 @@ import Alamofire
 
 final class NetworkManager {
     
+    //MARK: singletone
     static let instance = NetworkManager()
     private init() { }
     
@@ -20,6 +21,7 @@ final class NetworkManager {
         static let todos = "/todos"
     }
     
+    //MARK: API load
     func getTodos(completion: @escaping(Result<[TodoModel], RequestError>) -> ()) {
         AF.request(Constants.baseURL + EndPoint.todos)
             .validate()
@@ -29,7 +31,6 @@ final class NetworkManager {
                 completion(.success(todoResponse.todos))
             case .failure:
                 completion(.failure(.errorRequest))
-                
             }
         }
     }

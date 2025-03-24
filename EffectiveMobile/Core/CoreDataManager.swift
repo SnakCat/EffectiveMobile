@@ -10,9 +10,11 @@ import UIKit.UIApplication
 
 final class CoreDataManager {
     
+    //MARK: singletone
     static let instance = CoreDataManager()
     private init() { }
     
+    //MARK: save coreData
     func saveTodo(todoName: String, createdDate: Date, todoDescription: String, isCompleted: Bool) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
@@ -34,6 +36,7 @@ final class CoreDataManager {
         return .success(())
     }
     
+    //MARK: load coreData
     func loadTodo() -> Result<[TodoEntity], CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
@@ -49,6 +52,7 @@ final class CoreDataManager {
         }
     }
     
+    //MARK: delete coreData
     func deleteTodo(_ todo: TodoEntity) -> Result<Void, CoreDataError> {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return .failure(.error("AppDelegate not found"))
@@ -59,7 +63,7 @@ final class CoreDataManager {
             try managerContext.save()
             return .success(())
         } catch {
-            return .failure(.error("Error deletind todo \(error)"))
+            return .failure(.error("Error deleted todo \(error)"))
         }
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol NewTodoPresenterProtocol: AnyObject {
-
+    func didFetchTodos(_ todos: [TodoEntity])
+    func didFailWithError(_ error: CoreDataError)
 }
 
 final class NewTodoPresenter: NewTodoPresenterProtocol {
@@ -20,5 +21,13 @@ final class NewTodoPresenter: NewTodoPresenterProtocol {
     init(interactor: NewTodoInteractorProtocol, router: NewTodoRouterProtocol) {
         self.interactor = interactor
         self.router = router
+    }
+    
+    func didFetchTodos(_ todos: [TodoEntity]) {
+        <#code#>
+    }
+    
+    func didFailWithError(_ error: CoreDataError) {
+        <#code#>
     }
 }

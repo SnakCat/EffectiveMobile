@@ -10,12 +10,14 @@ import UIKit
 
 final class CustomCell: UITableViewCell {
     
+    //MARK: properties
     private let containerView = UIView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let dateLabel = UILabel()
     private var checkboxButton = CheckboxButton()
     
+    //MARK: life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubView()
@@ -27,11 +29,15 @@ final class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: helpers methods
+    
+    //add sub view
     private func addSubView() {
         contentView.addSubview(containerView)
         containerView.addSubViews(titleLabel, descriptionLabel, dateLabel, checkboxButton)
     }
     
+    //constraints
     private func setupConstraints() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +70,7 @@ final class CustomCell: UITableViewCell {
         ])
     }
     
+    //UI
     private func setupUI() {
         contentView.backgroundColor = .black
         contentView.layer.cornerRadius = 10
@@ -78,6 +85,7 @@ final class CustomCell: UITableViewCell {
         dateLabel.textColor = .gray
     }
     
+    //MARK: configure table view cell
     func configureCell(todo: TodoModel) {
         titleLabel.text = "id: \(todo.id), userId: \(todo.userId)"
         descriptionLabel.text = todo.todo
@@ -89,6 +97,7 @@ final class CustomCell: UITableViewCell {
         }
     }
     
+    //method toggle text in cell
     private func updateDescriptionStyle(isCompleted: Bool) {
         let text = descriptionLabel.text ?? ""
         if isCompleted {

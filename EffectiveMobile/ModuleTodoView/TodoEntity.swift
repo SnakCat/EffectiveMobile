@@ -23,6 +23,7 @@ struct TodoModel: Codable {
             return "Дата не указана"
         }
     }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case todo

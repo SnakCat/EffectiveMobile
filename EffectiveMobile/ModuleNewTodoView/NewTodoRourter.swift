@@ -12,5 +12,6 @@ protocol NewTodoRouterProtocol: AnyObject {
 }
 
 final class NewTodoRouter: NewTodoRouterProtocol {
+    
     weak var view: NewTodoViewProtocol?
 }

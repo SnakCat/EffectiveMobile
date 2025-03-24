@@ -16,6 +16,7 @@ protocol TodoPresenterProtocol: AnyObject {
 }
 
 final class TodoPresenter: TodoPresenterProtocol {
+    
     weak var view: TodoViewProtocol?
     var interactor: TodoInteractorProtocol
     var router: TodoRouterProtocol
